@@ -1,0 +1,25 @@
+.person-card {
+  width: 25%;
+  height: auto;
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.person-info{
+  padding: 5px;
+}
+
+.person-settings{
+  width: 100%;
+  height: auto;
+}
+
+.person-settings button{
+  width: 50%;
+  border: 1px solid white;
+  height: 25px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0)
+}
