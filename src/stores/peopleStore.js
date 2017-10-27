@@ -54,8 +54,13 @@ class PeopleStore extends EventEmitter{
   }
 
   lookPerson(id){
-    const val = this.people.filter(person => id === person.id)
-    return val[0]
+    const index = this.people.findIndex(person => person.id === id);
+    if(index > -1){
+      console.log('THIS IS THE INDEX ', this.people[index]);
+      return this.people[index]
+    } else {
+      alert('ELEMENT DOESN\'T EXIST');
+    }
   }
 
   handleActions(action){

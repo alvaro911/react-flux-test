@@ -17,8 +17,8 @@ class App extends Component {
       personName: '',
       personLastName: '',
       personAddress: '',
+      toEdit: ''
     };
-    // this.personInfo = this.personInfo.bind(this)
     PeopleStore.on('change', () => {
       this.setState({
         people: PeopleStore.getAllPeople()
@@ -37,26 +37,32 @@ class App extends Component {
     })
   }
 
-  editPersonInfo(e){
+  deletePerson(){
+    PeopleActions.deletePerson(this.props.id);
+  }
+
+  lookPerson() {
+    const edit = PeopleStore.lookPerson(this.props.id);
+    console.log('THIS IS EDIT ', edit);
+    this.setState({
+      personName: edit.name,
+      personLastName: edit.lastName,
+      personAddress: edit.address,
+    })
+  }
+
+  submitPersonEdit(e){
+    e.preventDefault()
+  }
+
+  personChangeInfo(e){
     this.setState({
       personName: e.target.value
     })
   }
 
-  deletePerson(){
-    PeopleActions.deletePerson(this.props.id)
-  }
-
-  lookPerson(){
-    const editPerson = PeopleStore.lookPerson(this.props.id)
-    this.setState({
-      personName: editPerson.name,
-      personLastName: editPerson.lastName,
-      personAddress: editPerson.address
-    })
-  }
-
   render() {
+    console.log('THIS IS TO EDIT ',this.state.toEdit);
     const { people } = this.state;
     const PersonComponent = people.map((person) => {
       return <Person key={person.id} {...person} delete={this.deletePerson} findPerson={this.lookPerson}/>
@@ -70,7 +76,7 @@ class App extends Component {
           {PersonComponent}
         </main>
 
-        {/* <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <label htmlFor="name">Name</label>
           <input onChange={this.personInfo} type="text" name="name" value={this.state.name} />
           <label htmlFor="lastName">Last name</label>
@@ -79,16 +85,15 @@ class App extends Component {
           <input onChange={this.personInfo} type="text" name="address" value={this.state.address} />
 
           <button type="submit">OK</button>
-        </form> */}
+        </form>
 
-        <form onSubmit={this.editInfoSubmit}>
+        <form onSubmit={this.submitPersonEdit}>
           <label htmlFor="personName">Name</label>
-        <input
-          onChange={this.editPersonInfo}
-          type="text" name="personName"
-          value={this.state.personName}
-          onBlur={() => this.props.actions.updateInput(this.state.personName)}
-        />
+          <input
+            name="personName" type="text"
+            onChange={this.personChangeInfo}
+            value={this.state.personName}
+            onBlur={() => this.props.actions.updateInput(this.state.personName)}/>
         </form>
 
         <section>
