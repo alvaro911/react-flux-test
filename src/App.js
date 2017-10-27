@@ -76,6 +76,7 @@ class App extends Component {
           {PersonComponent}
         </main>
 
+        {/* THIS FORM IS TO ADD PEOPLE */}
         <form onSubmit={this.onSubmit}>
           <label htmlFor="name">Name</label>
           <input onChange={this.personInfo} type="text" name="name" value={this.state.name} />
@@ -87,6 +88,7 @@ class App extends Component {
           <button type="submit">OK</button>
         </form>
 
+        {/* THIS FORM IS TO EDIT PEOPLE */}
         <form onSubmit={this.submitPersonEdit}>
           <label htmlFor="personName">Name</label>
           <input
