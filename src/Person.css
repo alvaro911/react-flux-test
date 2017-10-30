@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   color: white;
+  margin-bottom: 35px;
 }
 
 .person-info{
@@ -17,9 +18,19 @@
 }
 
 .person-settings button{
+  cursor: pointer;
   width: 50%;
   border: 1px solid white;
   height: 25px;
   color: white;
-  background-color: rgba(0, 0, 0, 0)
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+
+.person-settings button:hover{
+  background-color: #cf1324;
 }

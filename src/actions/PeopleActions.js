@@ -16,9 +16,10 @@ export function deletePerson(id){
   })
 }
 
-export function lookPerson(id){
+export function updatePerson(id, updatePerson){
   dispatcher.dispatch({
-    type: 'LOOK_FOR_PERSON',
+    type: 'UPDATE_PERSON',
     id,
+    updatePerson,
   })
 }
