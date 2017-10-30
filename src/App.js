@@ -89,7 +89,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('this is the person to update ', this.state.personName);
     const { people } = this.state;
     const PersonComponent = people.map((person) => {
       return <Person key={person.id} {...person} delete={this.deletePerson} findPerson={this.handleEditPersonClick}/>

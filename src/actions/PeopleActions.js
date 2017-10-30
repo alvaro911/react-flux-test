@@ -13,7 +13,7 @@ export function deletePerson(id){
   dispatcher.dispatch({
     type: 'DELETE_PERSON',
     id,
-  })
+  });
 }
 
 export function updatePerson(id, updatePerson){
@@ -21,5 +21,5 @@ export function updatePerson(id, updatePerson){
     type: 'UPDATE_PERSON',
     id,
     updatePerson,
-  })
+  });
 }

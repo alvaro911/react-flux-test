@@ -46,7 +46,7 @@ class PeopleStore extends EventEmitter{
   }
 
   deletePerson(id){
-    const index = this.people.findIndex(person => person.id === id)
+    const index = this.people.findIndex(person => person.id === id);
     if(index > -1){
       this.people.splice(index, 1);
     }
@@ -57,19 +57,18 @@ class PeopleStore extends EventEmitter{
     const index = this.people.findIndex(person => person.id === id);
     if(index > -1){
       console.log('THIS IS THE INDEX ', this.people[index]);
-      return this.people[index]
+      return this.people[index];
     } else {
       alert('ELEMENT DOESN\'T EXIST');
     }
   }
 
   updatePerson(id, updatePerson){
-    console.log('update person', updatePerson);
-    const index = this.people.findIndex(person => person.id === id)
+    const index = this.people.findIndex(person => person.id === id);
     if(index > -1){
-      let person = this.people[index]
-      let newPerson = {...person, ...updatePerson}
-      this.people[index] = newPerson
+      let person = this.people[index];
+      let newPerson = {...person, ...updatePerson};
+      this.people[index] = newPerson;
     }
     this.emit('change')
   }
@@ -90,6 +89,6 @@ class PeopleStore extends EventEmitter{
 
 const peopleStore = new PeopleStore();
 
-dispatcher.register(peopleStore.handleActions.bind(peopleStore))
+dispatcher.register(peopleStore.handleActions.bind(peopleStore));
 
-export default peopleStore
+export default peopleStore;
